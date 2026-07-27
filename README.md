@@ -73,13 +73,14 @@ This project focuses on identifying these issues and providing insights to suppo
 
 # 🔄 Project Workflow
 
-1. Data Collection
-2. Database Design
-3. Data Cleaning & Validation
-4. SQL Business Analysis
-5. Python Exploratory Data Analysis
-6. Power BI Dashboard Development
-7. Business Insights & Recommendations
+1. Dataset Acquisition (Kaggle)
+2. Database Design (MySQL)
+3. Data import
+4. Data cleaning & Validation
+5. SQL Business Analysis
+6. Python Exploratory Data Analysis
+7. Power BI Dashboard Development
+8. Business Insights & Recommendations
 
 ---
 
@@ -152,7 +153,7 @@ SQL was used to analyze the healthcare revenue cycle and answer key business que
 - Revenue Leakage Analysis
 - Advanced SQL (CTEs, Window Functions & Views)
 
-Developed **40+ SQL queries** to analyze revenue, claim denials, insurance performance, and operational KPIs.
+Developed **30+ SQL queries** to analyze revenue, claim denials, insurance performance, and operational KPIs.
 
 ---
 
