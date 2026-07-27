@@ -1,6 +1,6 @@
 # 🏥 Healthcare Revenue Optimization & Claim Denial Analytics
 
-**Project Type:** End-to-End Data Analytics Project
+**Project Type:**  Data Analytics Project
 
 An end-to-end healthcare analytics project using SQL, Python, and Power BI to analyze hospital revenue, identify claim denials, measure revenue leakage, and support better financial decision-making.
 
