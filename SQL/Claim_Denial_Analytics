@@ -1,0 +1,60 @@
+/*==========================================
+ Claim Denial Analytics
+==========================================*/
+
+--1.Overall Claim Denial Rate
+
+SELECT
+    ROUND(
+        (COUNT(d.claim_id) * 100.0) /
+        COUNT(DISTINCT c.claim_id),
+        2
+    ) AS denial_rate_percentage
+FROM claims_and_billing c
+LEFT JOIN denials d
+ON c.claim_id = d.claim_id;
+
+
+--2. Top 10 Denial Reasons
+
+SELECT
+    denial_reason_description,
+    COUNT(*) AS total_denials
+FROM denials
+GROUP BY denial_reason_description
+ORDER BY total_denials DESC
+LIMIT 10;
+
+
+-- 3.Revenue Lost by Denial Reason
+
+SELECT
+    denial_reason_description,
+    ROUND(SUM(denied_amount),2) AS revenue_lost
+FROM denials
+GROUP BY denial_reason_description
+ORDER BY revenue_lost DESC;
+
+
+-- 4.Appeal Status Summary
+
+SELECT
+    appeal_status,
+    COUNT(*) AS total_cases
+FROM denials
+GROUP BY appeal_status
+ORDER BY total_cases DESC;
+
+
+-- 5.Monthly Claim Denial Trend
+
+SELECT
+    MONTH(denial_date) AS month_number,
+    MONTHNAME(denial_date) AS month_name,
+    COUNT(*) AS total_denials
+FROM denials
+WHERE denial_date IS NOT NULL
+GROUP BY
+    MONTH(denial_date),
+    MONTHNAME(denial_date)
+ORDER BY month_number;
