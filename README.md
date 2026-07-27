@@ -153,7 +153,7 @@ SQL was used to analyze the healthcare revenue cycle and answer key business que
 - Revenue Leakage Analysis
 - Advanced SQL (CTEs, Window Functions & Views)
 
-Developed **30+ SQL queries** to analyze revenue, claim denials, insurance performance, and operational KPIs.
+Developed **40+ SQL queries** to analyze revenue, claim denials, insurance performance, and operational KPIs.
 
 ---
 

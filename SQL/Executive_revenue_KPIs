@@ -1,0 +1,53 @@
+/*==========================================
+ Executive Revenue KPIs
+==========================================*/
+
+-- 1.Total Revenue Billed, Collected & Estimate Revenue Leakage
+
+SELECT
+    SUM(billed_amount) AS total_revenue_billed,
+    SUM(paid_amount) AS total_revenue_collected,
+    SUM(billed_amount - paid_amount) AS Estimate_revenue_leakage
+FROM claims_and_billing;
+
+
+-- 2.Revenue Collection Rate
+
+SELECT
+    ROUND(
+        (SUM(paid_amount) * 100) / SUM(billed_amount),
+        2
+    ) AS collection_rate
+FROM claims_and_billing;
+
+
+-- 3.Average Claim Value and collected value
+
+SELECT
+    ROUND(AVG(billed_amount), 2) AS average_claim_value,
+    ROUND(AVG(paid_amount), 2) AS average_collected_value
+FROM claims_and_billing;
+
+
+-- 4.Claim Status Summary
+
+SELECT
+    claim_status,
+    COUNT(*) AS total_claims
+FROM claims_and_billing
+GROUP BY claim_status
+ORDER BY total_claims DESC;
+
+
+-- 5.Monthly Revenue Trend
+
+SELECT
+    MONTH(claim_billing_date) AS month_number,
+    MONTHNAME(claim_billing_date) AS month_name,
+    ROUND(SUM(billed_amount), 2) AS total_revenue
+FROM claims_and_billing
+WHERE claim_billing_date IS NOT NULL
+GROUP BY
+    MONTH(claim_billing_date),
+    MONTHNAME(claim_billing_date)
+ORDER BY month_number;
