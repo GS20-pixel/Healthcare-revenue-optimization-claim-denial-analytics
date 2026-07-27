@@ -1,0 +1,62 @@
+/*==========================================
+ Insurance Provider & Revenue Impact
+==========================================*/
+
+-- 1.Total Claims by Insurance Provider
+
+SELECT
+    insurance_provider,
+    COUNT(*) AS total_claims
+FROM claims_and_billing
+GROUP BY insurance_provider
+ORDER BY total_claims DESC;
+
+
+--2. Revenue by Insurance Provider
+
+SELECT
+    insurance_provider,
+    ROUND(SUM(billed_amount),2) AS billed_revenue,
+    ROUND(SUM(paid_amount),2) AS collected_revenue
+FROM claims_and_billing
+GROUP BY insurance_provider
+ORDER BY billed_revenue DESC;
+
+
+-- 3.Revenue Collection Rate by Insurance Provider
+
+SELECT
+    insurance_provider,
+    ROUND(
+        (SUM(paid_amount) * 100.0) /
+        SUM(billed_amount),
+        2
+    ) AS collection_rate
+FROM claims_and_billing
+GROUP BY insurance_provider
+ORDER BY collection_rate DESC;
+
+
+-- 4.Revenue Leakage by Insurance Provider
+
+SELECT
+    insurance_provider,
+    ROUND(SUM(billed_amount - paid_amount),2) AS revenue_leakage
+FROM claims_and_billing
+GROUP BY insurance_provider
+ORDER BY revenue_leakage DESC;
+
+
+--5. Claim Status by Insurance Provider
+
+SELECT
+    insurance_provider,
+    claim_status,
+    COUNT(*) AS total_claims
+FROM claims_and_billing
+GROUP BY
+    insurance_provider,
+    claim_status
+ORDER BY
+    insurance_provider,
+    total_claims DESC;
