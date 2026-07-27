@@ -1,0 +1,96 @@
+/*==========================================
+ Advanced SQL Analysis
+==========================================*/
+
+-- 1.Top 5 Insurance Providers by Revenue (Window Function)
+
+SELECT *
+FROM
+(
+    SELECT
+        insurance_provider,
+        ROUND(SUM(billed_amount),2) AS total_revenue,
+        DENSE_RANK() OVER(ORDER BY SUM(billed_amount) DESC) AS revenue_rank
+    FROM claims_and_billing
+    GROUP BY insurance_provider
+) ranked_providers
+WHERE revenue_rank <= 5;
+
+
+-- 2.Monthly Revenue Trend (CTE)
+
+WITH monthly_revenue AS
+(
+    SELECT
+        MONTH(claim_billing_date) AS month_number,
+        MONTHNAME(claim_billing_date) AS month_name,
+        ROUND(SUM(billed_amount),2) AS total_revenue
+    FROM claims_and_billing
+    WHERE claim_billing_date IS NOT NULL
+    GROUP BY
+        MONTH(claim_billing_date),
+        MONTHNAME(claim_billing_date)
+)
+
+SELECT *
+FROM monthly_revenue
+ORDER BY month_number;
+
+
+-- 3.Providers Generating Above Average Revenue (Subquery)
+
+SELECT
+    provider_id,
+    total_revenue
+FROM
+(
+    SELECT
+        e.provider_id,
+        SUM(c.billed_amount) AS total_revenue
+    FROM encounters e
+    JOIN claims_and_billing c
+        ON e.encounter_id = c.encounter_id
+    GROUP BY e.provider_id
+) provider_revenue
+WHERE total_revenue >
+(
+    SELECT AVG(revenue)
+    FROM
+    (
+        SELECT
+            SUM(c.billed_amount) AS revenue
+        FROM encounters e
+        JOIN claims_and_billing c
+            ON e.encounter_id = c.encounter_id
+        GROUP BY e.provider_id
+    ) avg_revenue
+);
+
+
+--4. Executive Summary View
+
+CREATE VIEW executive_summary AS
+SELECT
+    COUNT(*) AS total_claims,
+    ROUND(SUM(billed_amount),2) AS billed_revenue,
+    ROUND(SUM(paid_amount),2) AS collected_revenue,
+    ROUND(SUM(billed_amount-paid_amount),2) AS revenue_leakage
+FROM claims_and_billing;
+
+SELECT * FROM executive_summary;
+
+
+-- 5.Cumulative Monthly Revenue (Window Function)
+
+SELECT
+    MONTH(claim_billing_date) AS month_number,
+    ROUND(SUM(billed_amount),2) AS monthly_revenue,
+    ROUND(
+        SUM(SUM(billed_amount))
+        OVER(ORDER BY MONTH(claim_billing_date)),
+        2
+    ) AS cumulative_revenue
+FROM claims_and_billing
+WHERE claim_billing_date IS NOT NULL
+GROUP BY MONTH(claim_billing_date)
+ORDER BY month_number;
