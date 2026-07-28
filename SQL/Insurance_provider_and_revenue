@@ -23,7 +23,7 @@ GROUP BY insurance_provider
 ORDER BY billed_revenue DESC;
 
 
--- 3.Revenue Collection Rate by Insurance Provider
+-- 3.Revenue Collection Rate
 
 SELECT
     insurance_provider,
@@ -47,16 +47,44 @@ GROUP BY insurance_provider
 ORDER BY revenue_leakage DESC;
 
 
---5. Claim Status by Insurance Provider
+--5. Average Claim Amount
+
+SELECT
+    insurance_provider,
+    ROUND(AVG(billed_amount),2) AS average_claim_amount
+FROM claims_and_billing
+GROUP BY insurance_provider
+ORDER BY average_claim_amount DESC;
+
+
+--6. Claim Status by Insurance Provider
 
 SELECT
     insurance_provider,
     claim_status,
     COUNT(*) AS total_claims
 FROM claims_and_billing
-GROUP BY
+GROUP BY insurance_provider, claim_status
+ORDER BY insurance_provider;
+
+
+-- 7.Total Paid Amount by Insurance Provider
+
+SELECT
     insurance_provider,
-    claim_status
-ORDER BY
+    ROUND(SUM(paid_amount),2) AS total_paid_amount
+FROM claims_and_billing
+GROUP BY insurance_provider
+ORDER BY total_paid_amount DESC;
+
+
+-- 8.Highest Paying Insurance Providers
+
+SELECT
     insurance_provider,
-    total_claims DESC;
+    ROUND(AVG(paid_amount),2) AS average_paid_amount
+FROM claims_and_billing
+GROUP BY insurance_provider
+ORDER BY average_paid_amount DESC
+LIMIT 10;
+
