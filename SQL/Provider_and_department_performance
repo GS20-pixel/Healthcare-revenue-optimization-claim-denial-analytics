@@ -2,7 +2,7 @@
  Provider & Department Performance
 ==========================================*/
 
--- Top 10 Revenue Generating Providers
+-- 1.Top 10 Revenue Generating Providers
 
 SELECT
     e.provider_id,
@@ -15,7 +15,7 @@ ORDER BY total_revenue DESC
 LIMIT 10;
 
 
--- Revenue by Department
+-- 2.Revenue by Department
 
 SELECT
     e.department,
@@ -27,7 +27,7 @@ GROUP BY e.department
 ORDER BY total_revenue DESC;
 
 
--- Average Revenue per Encounter
+--3. Average Revenue per Encounter
 
 SELECT
     e.department,
@@ -39,7 +39,7 @@ GROUP BY e.department
 ORDER BY average_revenue DESC;
 
 
--- Patient Volume by Department
+-- 4.Patient Volume by Department
 
 SELECT
     department,
@@ -49,7 +49,7 @@ GROUP BY department
 ORDER BY total_patients DESC;
 
 
--- Readmission Summary
+-- 5.Readmission Summary
 
 SELECT
     readmitted_flag,
@@ -57,3 +57,46 @@ SELECT
 FROM encounters
 GROUP BY readmitted_flag
 ORDER BY total_patients DESC;
+
+
+--6. Average Length of Stay by Department
+
+SELECT
+    department,
+    ROUND(AVG(length_of_stay),2) AS average_length_of_stay
+FROM encounters
+GROUP BY department
+ORDER BY average_length_of_stay DESC;
+
+
+--7. Visit Type Distribution
+
+SELECT
+    visit_type,
+    COUNT(*) AS total_visits
+FROM encounters
+GROUP BY visit_type
+ORDER BY total_visits DESC;
+
+
+-- 8.Top Providers by Patient Volume
+
+SELECT
+    provider_id,
+    COUNT(*) AS total_encounters
+FROM encounters
+GROUP BY provider_id
+ORDER BY total_encounters DESC
+LIMIT 10;
+
+
+-- 9.Average Claim Value by Department
+
+SELECT
+    e.department,
+    ROUND(AVG(c.billed_amount),2) AS average_claim_value
+FROM encounters e
+JOIN claims_and_billing c
+ON e.encounter_id = c.encounter_id
+GROUP BY e.department
+ORDER BY average_claim_value DESC;
