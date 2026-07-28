@@ -1,109 +1,35 @@
-# Power BI Dashboard Pages
+## Power BI Dashboard Pages
 
-The Power BI dashboard is designed to provide an interactive overview of healthcare revenue, insurance claim performance, and operational metrics.
-
----
-
-# Dashboard 1 – Executive Overview
-
-## KPIs
-
-- Total Revenue Billed
-- Total Revenue Collected
-- Revenue Leakage
-- Collection Rate (%)
-- Total Claims
-
-## Visuals
-
+## Page 1 — Executive Dashboard
+- Revenue KPIs
 - Monthly Revenue Trend
 - Claim Status Distribution
 - Revenue by Insurance Provider
-- Revenue Leakage by Insurance Provider
-
-## Purpose
-
-Provides a high-level overview of hospital revenue performance and claim processing efficiency.
+- Revenue Leakage Analysis
 
 ---
 
-# Dashboard 2 – Claim Denial Analytics
-
-## KPIs
-
-- Total Denials
-- Denial Rate (%)
-- Revenue Lost
-- Average Denied Amount
-
-## Visuals
-
+## Page 2 — Claim Denial Analytics
 - Top Denial Reasons
-- Revenue Lost by Denial Reason
 - Monthly Denial Trend
-- Appeal Status Distribution
+- Revenue Lost by Denial Reason
+- Appeal Status Analysis
 - Highest Denied Claims
 
-## Purpose
-
-Helps identify major reasons for insurance claim denials and their financial impact.
-
 ---
 
-# Dashboard 3 – Insurance Provider Performance
-
-## KPIs
-
-- Total Insurance Providers
-- Highest Revenue Provider
-- Highest Collection Rate
-- Average Claim Amount
-
-## Visuals
-
+## Page 3 — Insurance Provider Analysis
 - Revenue by Insurance Provider
-- Collection Rate by Provider
+- Collection Rate Comparison
 - Revenue Leakage by Provider
-- Claim Status by Insurance Provider
-- Top Insurance Providers by Revenue
-
-## Purpose
-
-Compares insurance providers based on revenue generation, collection efficiency, and claim performance.
+- Average Claim Value
+- Claim Status Distribution
 
 ---
 
-# Dashboard 4 – Hospital Operations
-
-## KPIs
-
-- Total Patients
-- Total Providers
-- Total Departments
-- Average Patient Age
-
-## Visuals
-
-- Department-wise Patients
+## Page 4 — Hospital Operations
+- Patient Demographics
+- Department Performance
 - Provider Workload
-- Gender Distribution
 - Age Distribution
 - Department Revenue
-
-## Purpose
-
-Provides operational insights into patient demographics, provider activity, and departmental performance.
-
----
-
-# Dashboard Filters
-
-The dashboard supports interactive filtering using
-
-- Insurance Provider
-- Claim Status
-- Month
-- Department
-- Gender
-
-These filters allow users to explore the data from different business perspectives.
