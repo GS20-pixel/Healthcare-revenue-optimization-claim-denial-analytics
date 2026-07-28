@@ -57,4 +57,32 @@ WHERE denial_date IS NOT NULL
 GROUP BY
     MONTH(denial_date),
     MONTHNAME(denial_date)
-ORDER BY month_number;
+ORDER BY month_number;  
+
+
+-- 6.Highest Denied Claims
+
+SELECT
+    claim_id,
+    denied_amount,
+    denial_reason_description
+FROM denials
+ORDER BY denied_amount DESC
+LIMIT 10;
+
+-- 7.Recoverable Revenue
+
+SELECT
+    ROUND(SUM(denied_amount),2) AS recoverable_revenue
+FROM denials
+WHERE appeal_status = 'Approved';
+
+
+8.-- Appeal Filing Summary
+
+SELECT
+    appeal_filed,
+    COUNT(*) AS total_cases
+FROM denials
+GROUP BY appeal_filed
+ORDER BY total_cases DESC;
