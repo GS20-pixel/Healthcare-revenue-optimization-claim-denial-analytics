@@ -78,7 +78,7 @@ FROM denials
 WHERE appeal_status = 'Approved';
 
 
-8.-- Appeal Filing Summary
+-- 8.Appeal Filing Summary
 
 SELECT
     appeal_filed,

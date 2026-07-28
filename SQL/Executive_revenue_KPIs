@@ -29,7 +29,7 @@ SELECT
 FROM claims_and_billing;
 
 
--- 4.Claim Status Summary
+-- 4.Claim Status Distribution
 
 SELECT
     claim_status,
@@ -39,7 +39,7 @@ GROUP BY claim_status
 ORDER BY total_claims DESC;
 
 
--- 5.Monthly Revenue Trend
+--5. Monthly Revenue Trend
 
 SELECT
     MONTH(claim_billing_date) AS month_number,

@@ -80,7 +80,7 @@ FROM claims_and_billing;
 SELECT * FROM executive_summary;
 
 
--- 5.Cumulative Monthly Revenue (Window Function)
+-- 5.Cumulative Monthly Revenue (using Window Function)
 
 SELECT
     MONTH(claim_billing_date) AS month_number,

@@ -23,7 +23,7 @@ GROUP BY insurance_provider
 ORDER BY billed_revenue DESC;
 
 
--- 3.Revenue Collection Rate
+--3.  Revenue Collection Rate
 
 SELECT
     insurance_provider,
