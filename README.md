@@ -10,17 +10,27 @@ An end-to-end healthcare analytics project using SQL, Python, and Power BI to an
 
 The project includes an interactive Power BI dashboard for revenue optimization and claim denial analysis.
 
-## Dashboard Screenshots
+## 📊 Dashboard Screenshots
 
 <p align="center">
 
-<img src="C:/Users/user/OneDrive/Desktop/python practice/git and github/Healthcare-revenue-optimization-claim-denial-analytics/Dashboard_screenshots/executive_dashboard.png" width="900"/>
+### Executive Dashboard
+<img src="Dashboard_screenshots/executive_dashboard.png" width="900" alt="Executive Dashboard"/>
 
-<img src="dashboard_screenshots/Dashboard_2_Claim_Denial.png" width="900"/>
+<br><br>
 
-<img src="dashboard_screenshots/Dashboard_3_Insurance.png" width="900"/>
+### Claim Denial Dashboard
+<img src="Dashboard_screenshots/claim_denial_dashboard.png" width="900" alt="Claim Denial Dashboard"/>
 
-<img src="dashboard_screenshots/Dashboard_4_Operations.png" width="900"/>
+<br><br>
+
+### Insurance Provider Dashboard
+<img src="Dashboard_screenshots/insurance_provider_dashboard.png" width="900" alt="Insurance Provider Dashboard"/>
+
+<br><br>
+
+### Hospital Operations Dashboard
+<img src="Dashboard_screenshots/hospital_operations_dashboard.png" width="900" alt="Hospital Operations Dashboard"/>
 
 </p>
 
