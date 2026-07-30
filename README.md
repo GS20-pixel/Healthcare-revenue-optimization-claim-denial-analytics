@@ -14,7 +14,7 @@ The project includes an interactive Power BI dashboard for revenue optimization 
 
 <p align="center">
 
-<img src="dashboard_screenshots/Dashboard_1_Executive.png" width="900"/>
+<img src="C:/Users/user/OneDrive/Desktop/python practice/git and github/Healthcare-revenue-optimization-claim-denial-analytics/Dashboard_screenshots/executive_dashboard.png" width="900"/>
 
 <img src="dashboard_screenshots/Dashboard_2_Claim_Denial.png" width="900"/>
 
